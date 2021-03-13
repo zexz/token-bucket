@@ -1,15 +1,14 @@
 {
-    "name": "bandwidth-throttle/token-bucket",
+    "name": "zexz/token-bucket",
     "type": "library",
     "description": "Implementation of the Token Bucket algorithm.",
     "keywords": ["token bucket", "bandwidth", "rate limit", "throttle", "throttling", "rate limiting"],
-    "homepage": "https://github.com/bandwidth-throttle/token-bucket",
+    "homepage": "https://github.com/zexz/token-bucket",
     "license": "WTFPL",
     "authors": [
         {
-            "name": "Markus Malkusch",
-            "email": "markus@malkusch.de",
-            "homepage": "http://markus.malkusch.de",
+            "name": "zexz",
+            "email": "zexz@xairo.com",
             "role": "Developer"
         }
     ],
