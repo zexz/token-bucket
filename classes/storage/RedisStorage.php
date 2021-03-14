@@ -9,6 +9,7 @@ use bandwidthThrottle\tokenBucket\util\DoublePacker;
 use malkusch\lock\mutex\PredisMutex;
 use malkusch\lock\mutex\Mutex;
 use Illuminate\Support\Facades\Redis;
+use Exception;
 
 /**
  * Redis based storage which uses Laravel Redis Helper.
@@ -55,7 +56,7 @@ final class RedisStorage implements Storage, GlobalScope
     {
         try {
             return (bool) $this->redis::get($this->key);
-        } catch (PredisException $e) {
+        } catch (Exception $e) {
             throw new StorageException("Failed to check for key existence", 0, $e);
         }
     }
@@ -66,7 +67,7 @@ final class RedisStorage implements Storage, GlobalScope
             if (!$this->redis::del($this->key)) {
                 throw new StorageException("Failed to delete key");
             }
-        } catch (PredisException $e) {
+        } catch (Exception $e) {
             throw new StorageException("Failed to delete key", 0, $e);
         }
     }
@@ -81,7 +82,7 @@ final class RedisStorage implements Storage, GlobalScope
             if (!$this->redis::set($this->key, $data)) {
                 throw new StorageException("Failed to store microtime");
             }
-        } catch (PredisException $e) {
+        } catch (Exception $e) {
             throw new StorageException("Failed to store microtime", 0, $e);
         }
     }
@@ -97,7 +98,7 @@ final class RedisStorage implements Storage, GlobalScope
                 throw new StorageException("Failed to get microtime");
             }
             return DoublePacker::unpack($data);
-        } catch (PredisException $e) {
+        } catch (Exception $e) {
             throw new StorageException("Failed to get microtime", 0, $e);
         }
     }
